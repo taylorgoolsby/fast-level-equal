@@ -1,6 +1,6 @@
 {
   "name": "fast-level-equal",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "Fast level equal",
   "main": "index.js",
   "scripts": {
