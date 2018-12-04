@@ -10,7 +10,7 @@ describe('equal', function() {
     describe(suite.description, function() {
       suite.tests.forEach(function (test) {
         it(test.description, function() {
-          assert.strictEqual(equal(test.value1, test.value2), test.equal);
+          assert.strictEqual(equal(test.value1, test.value2, test.value3), test.equal);
         });
       });
     });

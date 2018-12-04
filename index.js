@@ -4,7 +4,11 @@ var isArray = Array.isArray;
 var keyList = Object.keys;
 var hasProp = Object.prototype.hasOwnProperty;
 
-module.exports = function equal(a, b) {
+module.exports = function equal(a, b, remainingLevels) {
+  // eslint-disable-next-line
+  // console.log('remainingLevels', remainingLevels)
+  if (remainingLevels === 0) return a === b;
+
   if (a === b) return true;
 
   if (a && b && typeof a == 'object' && typeof b == 'object') {
@@ -18,7 +22,7 @@ module.exports = function equal(a, b) {
       length = a.length;
       if (length != b.length) return false;
       for (i = length; i-- !== 0;)
-        if (!equal(a[i], b[i])) return false;
+        if (!equal(a[i], b[i], remainingLevels - 1)) return false;
       return true;
     }
 
@@ -45,7 +49,7 @@ module.exports = function equal(a, b) {
 
     for (i = length; i-- !== 0;) {
       key = keys[i];
-      if (!equal(a[key], b[key])) return false;
+      if (!equal(a[key], b[key], remainingLevels - 1)) return false;
     }
 
     return true;
